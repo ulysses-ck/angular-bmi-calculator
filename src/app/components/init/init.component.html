@@ -1,0 +1,79 @@
+<nav><h2 class="text-center text-4xl p-4 title">BMI Calculator</h2></nav>
+<div class="flex flex-col justify-center gap-y-4 text-center mx-28">
+	<div class="flex gap-x-4">
+		<div
+			class="h-[8rem] bg-rose-900 rounded-lg p-2 w-2/4 items-center justify-center cursor-pointer disabled:bg-rose-500"
+			(click)="femenine()"
+			[ngClass]="{ disabled: sex === 'Masculine' }"
+		>
+			<span class="text-6xl"><i class="fa-solid fa-venus"></i></span>
+			<p>Femenine</p>
+		</div>
+		<div
+			class="h-[8rem] bg-rose-900 rounded-lg p-2 w-2/4 items-center justify-center cursor-pointer"
+			(click)="masculine()"
+			[ngClass]="{ disabled: sex === 'Femenine' }"
+		>
+			<span class="text-6xl"><i class="fa-solid fa-mars"></i></span>
+			<p>Masculine</p>
+		</div>
+	</div>
+	<div class="h-[8rem] bg-rose-900 rounded-lg p-2">
+		<p class="inline text-4xl font-bold">{{ height }}</p>
+		<p class="inline">cm</p>
+		<div class="block px-4">
+			<label for="height-range" class="block">Height</label>
+			<input
+				type="range"
+				name="height-range"
+				[value]="height"
+				(input)="changeHeight($event)"
+				min="120"
+				max="220"
+				id="height-range"
+			/>
+		</div>
+	</div>
+	<div class="flex gap-x-4">
+		<div class="h-[8rem] bg-rose-900 rounded-lg p-2 w-2/4">
+			<p>Weight</p>
+			<p class="text-4xl">{{ weight }}</p>
+
+			<button
+				class="rounded-full inline bg-rose-500 m-2 w-10 h-10 font-extrabold"
+				(click)="weight = weight - 1"
+			>
+				<i class="fa-solid fa-minus text-xl"></i>
+			</button>
+			<button
+				class="rounded-full inline bg-rose-500 m-2 w-10 h-10 font-extrabold"
+				(click)="weight = weight + 1"
+			>
+				<i class="fa-solid fa-plus text-xl"></i>
+			</button>
+		</div>
+		<div class="h-[8rem] bg-rose-900 rounded-lg p-2 w-2/4">
+			<p>Age</p>
+			<p class="text-4xl">{{ age }}</p>
+
+			<button
+				class="rounded-full inline bg-rose-500 m-2 w-10 h-10 font-extrabold"
+				(click)="age = age - 1"
+			>
+				<i class="fa-solid fa-minus text-xl"></i>
+			</button>
+			<button
+				class="rounded-full inline bg-rose-500 m-2 w-10 h-10 font-extrabold"
+				(click)="age = age + 1"
+			>
+				<i class="fa-solid fa-plus text-xl"></i>
+			</button>
+		</div>
+	</div>
+	<button
+		class="bg-rose-500 text-2xl rounded-lg p-2"
+		(click)="calculateBMI()"
+	>
+		CALCULATE
+	</button>
+</div>
